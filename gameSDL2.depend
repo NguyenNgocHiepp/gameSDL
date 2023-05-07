@@ -1,5 +1,5 @@
 # depslib dependency file v1.0
-1683226367 source:d:\gamesdl\gamesdl2\main.cpp
+1683453061 source:d:\gamesdl\gamesdl2\main.cpp
 	"CommonFunc.h"
 	"BaseObject.h"
 	"game_map.h"
@@ -451,7 +451,7 @@
 	"CommonFunc.h"
 	"BaseObject.h"
 
-1683214690 source:d:\gamesdl\gamesdl2\mainobject.cpp
+1683451413 source:d:\gamesdl\gamesdl2\mainobject.cpp
 	"MainObject.h"
 
 1683212568 source:d:\gamesdl\gamesdl2\imptimer.cpp

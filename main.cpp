@@ -121,6 +121,7 @@ int main( int argc, char* args[] )
     TextObject time_game;
     time_game.SetColor(TextObject::WHITE_TEXT);
 
+
     bool is_quit=false;
 
     int ret_menu = SDLCommonFunc::ShowMenu(g_screen,font_time,0);
@@ -185,6 +186,9 @@ int main( int argc, char* args[] )
                         bool ret=g_youdied.LoadImg("img//died.png",g_screen);
                         g_youdied.SetRect(360,0);
                         g_youdied.Render(g_screen,NULL);
+                        time_game.RenderText(g_screen,SCREEN_WIDTH-120,25);
+
+
                         int ret_menu = SDLCommonFunc::ShowMenu(g_screen,font_time,1);
                         if (ret_menu==1)
                         {
@@ -218,10 +222,10 @@ int main( int argc, char* args[] )
                 if (rect_1.x==rect_2.x && rect_1.y==rect_2.y)
                 {
                     ThreatsObject* p_threatt = threats_list.at(i);
-                    p_threatt->set_x_pos((rand()%SCREEN_WIDTH)+120);
-                    p_threatt->set_y_pos(0);
+                    p_threatt->Free();
                 }
             }
+
 
         p_player.DoPlayer(map_data);
         p_player.Show(g_screen);
@@ -236,11 +240,8 @@ int main( int argc, char* args[] )
         time_game.RenderText(g_screen,SCREEN_WIDTH-120,25);
 
         //increase thread
-        if (threats_list.size()<2 && time_val==10) IncreaseThreat();
-        if (threats_list.size()<3 && time_val==30) IncreaseThreat();
-        if (threats_list.size()<4 && time_val==60) IncreaseThreat();
-        if (threats_list.size()<5 && time_val==100) IncreaseThreat();
-
+        int d=time_val/10+1;
+        if (threats_list.size()<d) IncreaseThreat();
 
         SDL_RenderPresent(g_screen);
 
